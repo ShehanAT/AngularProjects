@@ -1,18 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http';
+import { routing } from './app-routing.module';
 
-import { AppRoutingModule } from './app-routing.module';
+
+import { fakeBackendProvider } from './fake-backend';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { AlertComponent } from './alert/alert.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    routing
   ],
-  providers: [],
+  providers: [
+    fakeBackendProvider
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
