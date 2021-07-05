@@ -1,0 +1,40 @@
+<div id="direct_upload" ng2FileDrop [uploader]="cloudinaryService.uploader" (fileOver)="cloudinaryService.fileOverBase($event)" [ngClass]="{'nv-file-over': cloudinaryService.hasBaseDropZoneOver}">
+    <form>
+        <div class="form_line">
+            <div class="form_control">
+                <div class="upload_button_holder file-path-wrapper">
+                    <label class="upload_button" for="fileupload">Storybook Cover Image Upload: </label>
+                    <input type="file" id="fileupload" class="" #fileInput ng2FileSelect  [uploader]="cloudinaryService.uploader" (change)="fileInput.value=''"
+                        />
+                </div>
+
+            </div>
+        </div>
+    </form>
+    <div class="file" *ngFor="let response of cloudinaryService.responses; let i = index">
+        <h3>{{response.file.name}}</h3>
+    <button class="delete-image" *ngIf="!!response.data.delete_token" (click)="cloudinaryService.deleteImage(response.data, i)">Delete image</button>
+        <div class="status">
+            Uploading... {{response.progress}}%
+            <div *ngIf="!response.status">In progress</div>
+            <div class="status-code" *ngIf="response.status">Upload completed with status code {{response.status}}</div>
+        </div>
+        <div class="progress-bar">
+			<div class="progress" role="progressbar" [style.width.%]="response.progress"></div>
+		</div>
+        <div class="form_line">
+			<div class="form_controls">
+				<div class="preview">
+                    <div *ngFor="let item of uploader.queue" class="media">
+                        <div class="media-left">
+                            <img src="" imgPreview [image]="item?._file" class="media-object" />
+                        </div>
+                        <div class="media-body">
+                            <p>{{ item?.file?.name }}</p>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
