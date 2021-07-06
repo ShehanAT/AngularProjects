@@ -9,7 +9,7 @@ import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-fi
 export class CloudinaryService {
   uploaderOptions: FileUploaderOptions = {
     url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`,
-    autoUpload: true,
+    autoUpload: false,
     isHTML5: true,
     removeAfterUpload: true,
     // XHR request headers
@@ -42,10 +42,6 @@ export class CloudinaryService {
   }
 
   uploadToCloudinary(){
-
-
-    // this.uploader = new FileUploader(uploaderOptions);
-
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
       this.responses = [];
       this.title = '';
@@ -58,7 +54,6 @@ export class CloudinaryService {
       form.append('folder', 'angular_sample');
       form.append('tags', tags);
       form.append('file', fileItem);
-      // Use default "withCredentials" value for CORS requests
       fileItem.withCredentials = false;
       return { fileItem, form };
     };
@@ -123,7 +118,6 @@ export class CloudinaryService {
     };
     this.http.post(url, body, httpOptions).subscribe((response: any) => {
       console.log(`Deleted image - ${data.public_id} ${response.result}`);
-      // Remove deleted item for responses
       this.responses.splice(index, 1);
     });
   };
@@ -139,7 +133,6 @@ export class CloudinaryService {
       return null;
     }
   
-    // console.log(key + ": " + fileProperties[key])
     Object.keys(fileProperties).map((key) => 
       console.log(key + ": " + fileProperties[key])
     );

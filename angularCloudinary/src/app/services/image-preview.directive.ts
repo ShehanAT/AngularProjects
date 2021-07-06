@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, Renderer2, OnChanges, SimpleChanges } from '@angular/core';
 
-@Directive({ selector: 'img[imgPreview]' })
+@Directive({ selector: 'img[imagePreview]' })
 export class ImagePreview {
 
     @Input() image: any;

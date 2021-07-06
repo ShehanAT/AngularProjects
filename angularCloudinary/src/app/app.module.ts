@@ -19,7 +19,8 @@ export const config: CloudinaryConfiguration = cloudinaryConfiguration;
 @NgModule({
   declarations: [
     AppComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    ImagePreview
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,6 @@ export const config: CloudinaryConfiguration = cloudinaryConfiguration;
     CloudinaryModule.forRoot(cloudinary, config),
     HttpClientModule,
     FileUploadModule,
-    Directive
   ],
   providers: [ImagePreview],
   bootstrap: [AppComponent]
