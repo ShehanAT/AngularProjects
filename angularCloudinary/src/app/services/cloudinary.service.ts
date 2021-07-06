@@ -24,8 +24,6 @@ export class CloudinaryService {
   @Input()
   responses: Array<any>;
   title: string;
-  fileUploadUrl: string = '';
-  imageUploaded: boolean = false;
   hasBaseDropZoneOver: boolean = false;
   constructor(
     private cloudinary: Cloudinary,
@@ -35,8 +33,6 @@ export class CloudinaryService {
     this.responses = [];
     this.title = '';
   }
-
- 
 
   ngOnInit(){
   }
@@ -73,9 +69,6 @@ export class CloudinaryService {
           this.responses.push(fileItem);
         }
       });
-      this.fileUploadUrl = this.responses[0]?.data.secure_url;
-      this.imageUploaded = true;
-
     };
   
     this.uploader.onCompleteItem = (item: any, response: string, status: number, headers: ParsedResponseHeaders) =>{
@@ -98,46 +91,5 @@ export class CloudinaryService {
         }
       );
     }
-  }
-
-  updateTitle(value: string){
-    this.title = value;
-  }
-
-  deleteImage = function (this: CloudinaryService, data: any, index: number) {
-    const url = `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/delete_by_token`;
-    var httpOptions = {
-      headers: new HttpHeaders({ 
-        'Access-Control-Allow-Origin':'*',
-        'Content-Type': 'application/json', 
-        'X-Requested-With': 'XMLHttpRequest' 
-      })
-    }
-    const body = {
-      token: data.delete_token
-    };
-    this.http.post(url, body, httpOptions).subscribe((response: any) => {
-      console.log(`Deleted image - ${data.public_id} ${response.result}`);
-      this.responses.splice(index, 1);
-    });
-  };
-  
-  fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
-  
-  
-  getFileProperties(fileProperties: any){
-    
-    if(!fileProperties){
-      return null;
-    }
-  
-    Object.keys(fileProperties).map((key) => 
-      console.log(key + ": " + fileProperties[key])
-    );
-  
-    return Object.keys(fileProperties)
-    .map((key) => ({ 'key': key, 'value': fileProperties[key] }))
   }
 }

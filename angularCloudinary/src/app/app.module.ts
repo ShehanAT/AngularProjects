@@ -9,7 +9,6 @@ import { CloudinaryConfiguration, CloudinaryModule } from '@cloudinary/angular-5
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
 import cloudinaryConfiguration from './config';
 import { FileUploadModule } from "ng2-file-upload"; 
-import { ImagePreview } from './services/image-preview.directive';
 
 export const cloudinary = {
   Cloudinary: CloudinaryCore
@@ -20,7 +19,6 @@ export const config: CloudinaryConfiguration = cloudinaryConfiguration;
   declarations: [
     AppComponent,
     ImageUploadComponent,
-    ImagePreview
   ],
   imports: [
     BrowserModule,
@@ -29,7 +27,7 @@ export const config: CloudinaryConfiguration = cloudinaryConfiguration;
     HttpClientModule,
     FileUploadModule,
   ],
-  providers: [ImagePreview],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
