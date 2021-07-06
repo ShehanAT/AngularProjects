@@ -1,32 +1,42 @@
+<div class="body-container-wrapper">
+  <div class="body-container">
+    <div class="page-center">
+      
+     
 
-    <form>
-        <div class="form_line">
-            <div class="form_control">
-                <div class="upload_button_holder file-path-wrapper">
-                    <label class="upload_button" for="fileupload">Storybook Cover Image Upload: </label>
-                    <input type="file" id="fileupload" class="" name="fileupload" #fileInput ng2FileSelect [uploader]="cloudinaryService.uploader" (change)="imageSelectForUpload($event)"
-                        /> 
-                    <button type="button" class="btn btn-success btn-s" 
-                    (click)="cloudinaryService.uploader.uploadAll()" 
-                    [disabled]="!cloudinaryService.uploader.getNotUploadedItems().length" >
-                        Upload an Image
-                    </button>
+      
+      <i class="fa fa-cloud" aria-hidden="true"></i>
+      <h1>Upload Your <strong>Files</strong> To Cloudinary</h1>
+        <div id="drop">
+                <input type="file" id="fileupload" class="" name="fileupload" #fileInput ng2FileSelect [uploader]="cloudinaryService.uploader" (change)="imageSelectForUpload($event)"
+                /> 
+                <img [src]="imageUrl" *ngIf="imageUrl" class="selected-image"/>
+                <button type="button" class="btn btn-success btn-s upload" 
+                (click)="cloudinaryService.uploader.uploadAll()" 
+                [disabled]="!cloudinaryService.uploader.getNotUploadedItems().length" >
+                    <span>Upload Image!</span>
+                </button>
+          </div>
+        <!-- </form> -->
+      <div class="file-upload-bar">
+        <div class="bar-wrapper">
+          <div class="overall"><span>Overall Progress</span>
+            <div class="file" *ngFor="let response of cloudinaryService.responses; let i = index">
+                <h3>{{response.file.name}}</h3>
+            <button class="delete-image" *ngIf="!!response.data.delete_token" (click)="cloudinaryService.deleteImage(response.data, i)">Delete image</button>
+                <div class="status">
+                    Uploading... {{response.progress}}%
+                    <div *ngIf="!response.status">In progress</div>
+                    <div class="status-code" *ngIf="response.status">Upload completed with status code {{response.status}}</div>
                 </div>
-
-            </div>  
-            <img [src]="imageUrl" class="media-object" *ngIf="imageUrl" />
+                <div class="progress-bar-overall progress-bar">
+                    <div class="progress" role="progressbar" [style.width.%]="response.progress"></div>
+                </div>
+            </div>
+          </div>
         </div>
-    </form>
-    <div class="file" *ngFor="let response of cloudinaryService.responses; let i = index">
-        <h3>{{response.file.name}}</h3>
-    <button class="delete-image" *ngIf="!!response.data.delete_token" (click)="cloudinaryService.deleteImage(response.data, i)">Delete image</button>
-        <div class="status">
-            Uploading... {{response.progress}}%
-            <div *ngIf="!response.status">In progress</div>
-            <div class="status-code" *ngIf="response.status">Upload completed with status code {{response.status}}</div>
-        </div>
-        <div class="progress-bar">
-			<div class="progress" role="progressbar" [style.width.%]="response.progress"></div>
-            {{response | json}}
-		</div>
+      </div>
+      <div class="file-upload-bar-closed"></div>
     </div>
+  </div>
+</div>
