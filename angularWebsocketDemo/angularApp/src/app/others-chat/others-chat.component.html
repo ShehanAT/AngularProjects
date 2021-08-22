@@ -1,17 +1,1 @@
-<div class="chat-item-o" *ngIf="isOthers(message?.username)">
-    <div class="other">
-        <div class="message">
-            <div class="head">
-                <h4>{{message?.username}}</h4>
-                <i>{{ chatService.formatTime(message?.timestamp) }}</i>
-            </div>
-            <p class="content">
-                {{message?.content}}
-                <span *ngIf="message?.the_type === 'plain' || message?.the_type === undefined " 
-                    [innerHTML]="message?.content">
-                </span> 
-            </p>
-        </div>
-    </div>
-    <span *ngIf="message?.edited" class="material-icons-outlined">edit</span>
-</div>
+<p>others-chat works!</p>
