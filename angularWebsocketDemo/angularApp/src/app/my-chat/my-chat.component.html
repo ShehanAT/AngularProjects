@@ -8,7 +8,7 @@
                 <h4>{{message.username}}</h4>
                 <i>{{ chatService.formatTime(message.timestamp) }}</i>
             </div>
-            <p class="content">
+            <p clasSs="content">
                 <span *ngIf="message.the_type === 'plain' || message.the_type === undefined " 
                     [innerHTML]="message.content">
                 </span> 

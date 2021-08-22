@@ -3,12 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-<<<<<<< HEAD
   production: false
-=======
-  production: false,
-  WS_URL: 'http://localhost:8000'
->>>>>>> 4be9e422a514fac4c37597a16642d1b6d1ede8c9
 };
 
 /*

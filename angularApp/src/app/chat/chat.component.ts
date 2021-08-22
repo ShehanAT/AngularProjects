@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { ChatMessage } from "../models/chat.message";
 
-=======
->>>>>>> 4be9e422a514fac4c37597a16642d1b6d1ede8c9
 
 @Component({
   selector: 'app-chat',
@@ -11,7 +8,6 @@ import { ChatMessage } from "../models/chat.message";
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-<<<<<<< HEAD
   private messages: ChatMessage[];
   private websocket: ReconnectingWebSocket;
   private chatGroupId: number; 
@@ -54,12 +50,4 @@ export class ChatComponent implements OnInit {
 
 
 
-=======
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
->>>>>>> 4be9e422a514fac4c37597a16642d1b6d1ede8c9
 }
