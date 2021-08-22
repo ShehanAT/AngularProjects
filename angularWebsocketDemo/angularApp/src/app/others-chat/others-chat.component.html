@@ -1,1 +1,23 @@
+<<<<<<< HEAD
+<div class="chat-item-o" *ngIf="isOthers(message.username)">
+    <div class="other">
+        <div class="message">
+            <div class="head">
+                <h4>{{message.user}}</h4>
+                <i>{{ chatService.formatTime(message.timestamp) }}</i>
+                <img src="../../../assets/image/qoute-icon.png" alt="" (click)="qoute()"
+                    *ngIf="message.the_type === 'plain' || message.the_type === undefined">
+            </div>
+            <p class="content">
+                {{message.message}}
+                <span *ngIf="message.the_type === 'plain' || message.the_type === undefined " 
+                    [innerHTML]="message.content">
+                </span> 
+            </p>S
+        </div>
+    </div>
+    <span *ngIf="message.edited" ><i-feather name="edit-2" class="edit"></i-feather></span>
+</div>
+=======
 <p>others-chat works!</p>
+>>>>>>> 4be9e422a514fac4c37597a16642d1b6d1ede8c9
