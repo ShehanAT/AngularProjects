@@ -1,36 +1,19 @@
-<<<<<<< HEAD
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> 4be9e422a514fac4c37597a16642d1b6d1ede8c9
+import { Component, Input, OnInit } from '@angular/core';
+import { ChatService } from '../chat/chat.service';
+import { ChatMessage } from '../models/chat.message';
 
 @Component({
   selector: 'app-my-chat',
   templateUrl: './my-chat.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./my-chat.component.css'],
-})
-export class MyChatComponent implements OnInit {
-    current_user : String;
-    @Input() message;
-
-    constructor(){
-        this.current_user = sessionStorage.getItem("username");
-    }
-
-    ngOnInit(): void {}
-
-}
-=======
   styleUrls: ['./my-chat.component.css']
 })
 export class MyChatComponent implements OnInit {
-
-  constructor() { }
+  current_user : String | null = null;
+  @Input() message: ChatMessage | null = null;
+  
+  constructor(public chatService : ChatService) { }
 
   ngOnInit(): void {
   }
 
 }
->>>>>>> 4be9e422a514fac4c37597a16642d1b6d1ede8c9

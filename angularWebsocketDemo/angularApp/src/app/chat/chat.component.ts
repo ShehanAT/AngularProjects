@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
+import { environment } from 'src/environments/environment';
 import { ChatMessage } from "../models/chat.message";
+import ReconnectingWebSocket from '../services/reconnecting-websocket';
 
-=======
->>>>>>> 4be9e422a514fac4c37597a16642d1b6d1ede8c9
 
 @Component({
   selector: 'app-chat',
@@ -11,20 +10,19 @@ import { ChatMessage } from "../models/chat.message";
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-<<<<<<< HEAD
-  private messages: ChatMessage[];
-  private websocket: ReconnectingWebSocket;
-  private chatGroupId: number; 
+  public messages: ChatMessage[] = new Array<ChatMessage>();
+  private websocket: ReconnectingWebSocket | null = null;
+  private chatGroupId: number = 0;
   constructor() { }
 
   ngOnInit(): void {
-    callWebsocket();
+    this.callWebsocket();
   }
 
   callWebsocket(){
     
-    this.websocket = new ReconnectingWebsocket(
-      environment.WS_URL + "ws/classroom/" + this.group_id
+    this.websocket = new ReconnectingWebSocket(
+      environment.WS_URL + "ws/classroom/" + this.chatGroupId
     );
 
     this.websocket.onopen = (evt) => {
@@ -39,27 +37,31 @@ export class ChatComponent implements OnInit {
     this.websocket.onmessage = (evt) => {
       const data = JSON.parse(evt.data);
       var chatMessage = new ChatMessage();
-      chatMessage.message = data.message;
-      chatMessage.user = data.user;
+      chatMessage.content = data.message;
+      chatMessage.username = data.user;
       chatMessage.timestamp = data.timestamp;
       chatMessage.the_type = data.the_type;
       chatMessage.user_profile_img = data.user_profile_img;
       this.messages.push(chatMessage);
     }
-
-
-
-
   }
 
-
-
-=======
-
-  constructor() { }
-
-  ngOnInit(): void {
+  formatDate(dateToFormat : string | undefined) {
+    if(dateToFormat){
+      const date = new Date(dateToFormat)
+      const today = new Date
+      const yesterday = new Date 
+      let format_date = date.toLocaleDateString(
+        'en-US',{weekday:'long',month:'long',day:'numeric'}
+      )
+      yesterday.setDate(today.getDate() - 1)
+      if(date.toLocaleDateString() == today.toLocaleDateString()){
+        format_date = 'Today'
+      }else if (date.toLocaleDateString() == yesterday.toLocaleDateString()){
+        format_date = 'Yesterday'
+      }
+      return format_date
+    }
+    return null;
   }
-
->>>>>>> 4be9e422a514fac4c37597a16642d1b6d1ede8c9
 }

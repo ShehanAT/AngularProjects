@@ -1,19 +1,17 @@
-<div class="chat-item-o" *ngIf="isOthers(message.username)">
+<div class="chat-item-o" *ngIf="isOthers(message?.username)">
     <div class="other">
         <div class="message">
             <div class="head">
-                <h4>{{message.user}}</h4>
-                <i>{{ chatService.formatTime(message.timestamp) }}</i>
-                <img src="../../../assets/image/qoute-icon.png" alt="" (click)="qoute()"
-                    *ngIf="message.the_type === 'plain' || message.the_type === undefined">
+                <h4>{{message?.username}}</h4>
+                <i>{{ chatService.formatTime(message?.timestamp) }}</i>
             </div>
             <p class="content">
-                {{message.message}}
-                <span *ngIf="message.the_type === 'plain' || message.the_type === undefined " 
-                    [innerHTML]="message.content">
+                {{message?.content}}
+                <span *ngIf="message?.the_type === 'plain' || message?.the_type === undefined " 
+                    [innerHTML]="message?.content">
                 </span> 
-            </p>S
+            </p>
         </div>
     </div>
-    <span *ngIf="message.edited" ><i-feather name="edit-2" class="edit"></i-feather></span>
+    <span *ngIf="message?.edited" class="material-icons-outlined">edit</span>
 </div>

@@ -1,27 +1,8 @@
-<<<<<<< HEAD
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { ChatMessage } from "../models/chat.message";
-import { environment } from "./../../../enivironments/environment.dev.ts";
-
-@Component({
-    selector: 'app-others-chat',
-    templateUrl: './others-chat.component.html',
-    styleUrls: ['./others-chat.component.css']
-})
-export class OthersChatComponent implements OnInit {
-    current_user : String;
-    @Input() message: ChatMessage;
-
-    constructor(){
-        this.current_user = sessionStorage.getItem("username");
-    }
-
-    isOthers(username : String){
-        return username !== this.current_user;
-    }
-}
-=======
+import { NumberFormatStyle } from '@angular/common';
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from '../chat/chat.service';
+import { ChatMessage } from '../models/chat.message';
 
 @Component({
   selector: 'app-others-chat',
@@ -29,11 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./others-chat.component.css']
 })
 export class OthersChatComponent implements OnInit {
+  current_user : String | null = null;
+  @Input() message: ChatMessage | null = null;
 
-  constructor() { }
+
+  constructor(public chatService : ChatService) { }
 
   ngOnInit(): void {
   }
 
+  isOthers(username:string | undefined){
+    return username !== this.current_user;
 }
->>>>>>> 4be9e422a514fac4c37597a16642d1b6d1ede8c9
+
+}
