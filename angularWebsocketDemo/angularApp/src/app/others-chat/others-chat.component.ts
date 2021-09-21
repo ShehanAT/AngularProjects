@@ -23,8 +23,4 @@ export class OthersChatComponent implements OnInit {
   ngOnInit(){
 
   }
-
-  isOthers(username : string | undefined){
-      return username !== this.current_user;
-  }
 }

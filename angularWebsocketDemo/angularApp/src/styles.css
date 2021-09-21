@@ -99,17 +99,6 @@ ul {
 }
 
 .chatbox-avatar {
-  /* width: 80px;
-  height: 80px;
-  overflow: hidden;
-  border-radius: 50%;
-  background: white;
-  padding: 3px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .2);
-  position: absolute;
-  transition: .1s ease-out;
-  bottom: 0;
-  left: 6px; */
   width: 150px;
   height: 150px;
   border-radius: 100px;
