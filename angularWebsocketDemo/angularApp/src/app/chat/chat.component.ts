@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ChatMessage } from '../models/chat.message';
 import ReconnectingWebSocket from '../services/reconnecting-websocket';
+import sampleChatMessages from "../../assets/sample-chat-messages.json";
 
 @Component({
   selector: 'app-chat',
@@ -12,16 +13,22 @@ export class ChatComponent implements OnInit {
   public messages: ChatMessage[] = new Array<ChatMessage>();
   private websocket: ReconnectingWebSocket | null = null;
   private chatGroupId: number = 0;
+  @Input() currentUserId: string;
   constructor() { }
 
   ngOnInit(): void {
     this.callWebsocket();
+    this.messages = sampleChatMessages.chatMessages;
+    // for(var i = 0; i < sampleChatMessages?.chatMessages.length; i++){
+    //   var chatMessage = new ChatMessage();
+    //   chatMessage = 
+    // }
   }
 
   callWebsocket(){
     
     this.websocket = new ReconnectingWebSocket(
-      environment.WS_URL + "ws/classroom/" + this.chatGroupId
+      environment.WS_URL + "/ws/classroom/" + this.chatGroupId
     );
 
     this.websocket.onopen = (evt) => {
@@ -39,7 +46,7 @@ export class ChatComponent implements OnInit {
       chatMessage.content = data.message;
       chatMessage.username = data.user;
       chatMessage.timestamp = data.timestamp;
-      chatMessage.the_type = data.the_type;
+      chatMessage.type = data.type;
       chatMessage.user_profile_img = data.user_profile_img;
       this.messages.push(chatMessage);
     }

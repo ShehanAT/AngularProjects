@@ -16,7 +16,9 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "noImplicitReturns": false,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    // "esModuleInterop": true,
     "strictPropertyInitialization": false,
     "lib": [
       "es2018",

@@ -1,0 +1,34 @@
+{
+    "chatMessages" : [
+    {
+        "id": "1",
+        "userId": "1",
+        "username": "Wayne Gretzsky",
+        "type": "message",
+        "timestamp": 1632230424,
+        "user_profile_img": "../assets/wayneGretzsky.jpg",
+        "edited": false,
+        "content": "You miss 100 percent of the shots you never take."    
+    }, 
+    {
+        "id": "2",
+        "userId": "2",
+        "username": "Lance Armstrong",
+        "type": "message",
+        "timestamp": 1632235066,
+        "user_profile_img": "../assets/lanceArmstrong.jpg",
+        "edited": false,
+        "content": "Pain is temporary. Quitting lasts forever."   
+    },
+    {
+        "id": "3",
+        "userId": "3",
+        "username": "Tom Brady",
+        "type": "message",
+        "timestamp": 1632235037,
+        "user_profile_img": "../assets/tomBrady.jpg",
+        "edited": true,
+        "content": "Sometimes, getting up in the morning and brushing your teeth is the hardest part of the day - it all just hurts."   
+    }
+    ]
+}

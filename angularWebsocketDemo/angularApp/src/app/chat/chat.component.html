@@ -1,11 +1,11 @@
-<div *ngFor="let message of messages">
-    <div *ngIf="message.the_type === 'date'" class="chat-date">
+<div *ngFor="let message of messages" class="chat-messages">
+    <div *ngIf="message.type === 'date'" class="chat-date">
         <div>
           <span class="chat-date-text">
             {{formatDate(message.content)}}
           </span>
         </div>
     </div>
-    <app-others-chat [message]="message"></app-others-chat>
-    <app-my-chat [message]="message"></app-my-chat>
+    <app-others-chat *ngIf="currentUserId == message.userId" [message]="message"></app-others-chat>
+    <app-my-chat *ngIf="currentUserId != message.userId" [message]="message"></app-my-chat>
 </div>

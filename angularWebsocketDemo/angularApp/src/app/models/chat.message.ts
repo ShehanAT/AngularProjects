@@ -1,7 +1,7 @@
 export class ChatMessage {
     id: string | undefined;
+    userId: string;
     username: string | undefined;
-    the_type: string | undefined;
     timestamp: number | undefined;
     type: string | undefined;
     user_profile_img?: string;
