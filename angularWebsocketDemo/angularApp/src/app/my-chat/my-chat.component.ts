@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ChatService } from '../chat/chat.service';
+import { ChatMessage } from '../models/chat.message';
 
 @Component({
   selector: 'app-my-chat',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-chat.component.css']
 })
 export class MyChatComponent implements OnInit {
+  current_user : string | null;
+  @Input() message: ChatMessage;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    public chatService: ChatService
+  ){
+      this.current_user = sessionStorage.getItem("username");
   }
-
+  ngOnInit(): void {}
 }
