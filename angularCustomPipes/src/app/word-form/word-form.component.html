@@ -1,0 +1,10 @@
+<form class="form" [formGroup]="wordForm" (ngSubmit)="onSubmit()">
+    <label for="wordInput" >Enter a word: </label>
+    <br/>
+    <input id="wordInput" name="wordInput" type="text" formControlName="wordInput" />
+    <br/>
+    <br/>
+    <input type="submit" id="submitButton" />
+    <h3 *ngIf="showRandomWord">Scrambled Word: {{ randomWord | wordRandomizer }}</h3>
+</form>
+
