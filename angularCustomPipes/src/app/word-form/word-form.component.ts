@@ -19,12 +19,10 @@ export class WordFormComponent implements OnInit {
     this.wordForm = this.fb.group({
       wordInput: [null, Validators.required]
     });
-    console.log("wordFormComponent");
   }
 
   onSubmit(){
     if(this.wordForm.valid){
-      console.log(this.f.wordInput);
       this.randomWord = this.f.wordInput.value;
       this.showRandomWord = true;
     }
